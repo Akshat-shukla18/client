@@ -1,38 +1,195 @@
-.App {
-  text-align: center;
+/* App.css */
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Body with blurred background */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('4.webp') no-repeat center center/cover;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Login container with animated border */
+.form-container {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2.5rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent;
+    animation: borderAnimation 4s linear infinite;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Animated border keyframes */
+@keyframes borderAnimation {
+    0% {
+        border-color: #1f178b;
+        box-shadow: 0 0 12px #1b1bb9, 0 0 24px #0a4061;
+    }
+    33% {
+        border-color: #00b7eb;
+        box-shadow: 0 0 12px #00b7eb, 0 0 24px #00b7eb;
+    }
+    66% {
+        border-color: #0e3a3d;
+        box-shadow: 0 0 12px #169fba, 0 0 24px #119f87;
+    }
+    100% {
+        border-color: #1a60ca;
+        box-shadow: 0 0 12px #1d1775, 0 0 24px #0a2b7f;
+    }
 }
 
-.App-link {
-  color: #61dafb;
+/* Heading styles */
+h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Input styles */
+input {
+    width: 100%;
+    padding: 0.9rem;
+    margin: 0.8rem 0;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.03);
+}
+
+/* Button styles */
+button {
+    width: 100%;
+    padding: 0.9rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Login button */
+button[type="submit"] {
+    background: linear-gradient(45deg, #8a2be2, #00b7eb);
+    color: #ffffff;
+}
+
+/* Register button */
+.register-button {
+    background: linear-gradient(45deg, #24b1ed, #8a2be2);
+    color: #ffffff;
+}
+
+/* Button hover effect */
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+button:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Message styles */
+.message {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Success and error message styles */
+.success {
+    color: #00ff00;
+}
+.chart-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+.error {
+    background: rgba(245, 241, 241, 0.936);
+    color: #ec1616;
+}
+
+/* Fade-in animation for messages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .form-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input, button {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
 }
